@@ -11,12 +11,45 @@
   
   <body ng-app="artoo">
     <appbar></appbar>
+    <div ng-controller="PlayerCtrl">
+     <div>
+      Level:{{playerSrv.get().level}}
+    </div>
+    <div>
+      HP:{{playerSrv.get().hp}}
+    </div>
+    <div> 
+      Is dead:{{playerSrv.isDead()}}
+    </div>
+    
+    <button ng-hide="playerSrv.isDead()" ng-click="playerSrv.takeHit(15)">TakeHit!</button>
+    <button ng-click="playerSrv.drinkPotion()" ng-hide="playerSrv.isDead()">DrinkPotion!</button>
+    <button ng-click="playerSrv.levelUp()" ng-hide="playerSrv.isDead()">LevelUp!</button>
+    <button ng-click="playerSrv.die()" ng-hide="playerSrv.isDead()" >Kill</button>
+    <button ng-show="playerSrv.isDead()" ng-click="playerSrv.respwan()">Respawn</button>
+    </div>
+    <div ng-controller = "ItemsCtrl">
+      <div ng-repeat="item in ItemsSrv.get()">
+      <div>Item #{{$index+1}}</div>
+      <div>Name:{{item.name}}</div>
+      <div>Description:{{item.description}}</div>
+      <div>Price:{{item.price}}</div>
+      <div>Races:{{item.races}}</div>
+      <div>Availability: {{item.availability}}</div>
+      <button ng-click="ItemsSrv.updateAvailbility(item,1)">+1</button>
+      <button ng-click="ItemsSrv.updateAvailbility(item,-1)">-1</button>
+      <button ng-click="ItemsSrv.remove(item)">Remove</button>
+      <div></div>
+      <div></div>
+      </div>
+     
+    </div>
     
     <!-- create an items service with the following methods: get, add, remove, etc -->
     
     <!-- create a controller to expose the service to the view -->
     
-    <!-- create a user service with the following methods: getStatus, takeHit, drinkPotion, useMana, useGem, gainExp, die, respawn -->
+    <!-- create a user service with the following methods: getStatus, takeHit, drinkPotion, gainExp, die, respawn -->
     
     <!-- create a controller to expose the service to the view -->
     
@@ -25,7 +58,10 @@
     <script src="subjects/services/app.js"></script>
     
     <!-- include items service -->
-    
+    <script src="subjects/services/items.service.js"></script>
+    <script src="subjects/services/items.controller.js"></script>
+    <script src="subjects/services/player.controller.js"></script>
+    <script src="subjects/services/player.services.js"></script>
     <!-- include user service -->
   </body>
 </html>

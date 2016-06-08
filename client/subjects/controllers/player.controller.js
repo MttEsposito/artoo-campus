@@ -19,13 +19,14 @@ angular.module('artoo').controller('PlayerCtrl',($scope)=>{
         $scope.player.exp=0;
     };
     $scope.gainExp=(exp)=>{
-        var totalExp=$scope.player.exp + exp;
+        var totalExp=$scope.player.exp += exp;
  
-        if( totalExp >= 100){
+        if(( totalExp) >= 100){
+             totalExp=totalExp-100;
              $scope.levelUp();
-             totalExp=- 100;
+             $scope.player.hp=100;
         }
-        $scope.player.exp = totalExp;
+        $scope.player.exp= totalExp;
     };
 
 
