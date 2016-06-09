@@ -12,9 +12,43 @@
   
   <body ng-app="artoo">
     <appbar></appbar>
-    
-    <!-- implement a form for inserting items -->
-    
+    <div ng-controller="ItemsCtrl">
+   <select name="" ng-options="option.code as option.name for option in ItemSrv.get()" ng-model="selectedItem" ng-change="selectItem(selectedItem)"></select>
+      <!-- implement a form for inserting items -->
+      <form ng-hide="!item" name="iform" ng-submit="update(item, iform)">
+        <div class="row">
+        <input type="text" ng-model="item.name" name="name" required />
+        <label>Name:</label>
+        </div>
+        <div class="row">
+          <textarea name="description" rows="3" ng-model="item.description" required></textarea>
+          <label>Description</label>
+        </div>
+        <div class="row">
+          <input type="text" name="image" ng-model="item.image" required/>
+          <label>Image</label>
+        </div>
+        <button ng-disabled="iform.$invalid">Submit</button>
+        <a href ng-click="resetForm(input)">Reset</a>
+      </form>
+     <!--
+      <div>Text:{{JustAnInput}}</div>
+      <div>Dirty:{{iform.$dirty}}</div>
+      <div>Pristine:{{iform.$pristine}}</div>
+      <div>Valid:{{iform.$valid}}</div>
+      <div>Invalid:{{iform.$invalid}}</div>
+      <div>Submitted:{{iform.$submitted}}</div>
+      <div>Error:{{iform.$error}}</div>
+      </div>
+      -->
+     <div ng-repeat="item in ItemSrv.get()">
+       <div>Name: {{item.name}}</div>
+       
+       <div>Description: {{item.description}}</div>
+       <div><img ng-src="{{item.image}}" alt="{{item.image}}picture"></div>
+       <hr>
+     </div>
+    </div>
     <!-- interpolate results -->
     
     <!-- validate the form -->
@@ -29,5 +63,6 @@
     <script src="ui/appbar/appbar.js"></script>
     <script src="subjects/forms/app.js"></script>
     <script src="subjects/forms/items.controller.js"></script>
+    <script src="subjects/forms/items.service.js"></script>
   </body>
 </html>

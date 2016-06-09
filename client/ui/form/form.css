@@ -185,3 +185,7 @@ button {
 button:focus {
   outline: none;
 }
+button[disabled]{
+  opacity: .3;
+  pointer-events: none;
+}
