@@ -8,9 +8,24 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="ui/appbar/appbar.css">
   </head>
-  
+  <appbar></appbar>
   <body ng-app="artoo">
-    <appbar></appbar>
+    <div ng-controller="CssCntrl">
+      
+      <div css-adder="options">ciao ciao ciao</div><br>
+      <div css-adder="{typology: 'dashed'}"> ciao ciao ciao</css-adder></div>
+      
+    </div>
+    <div ng-controller="PlayerCntrl">
+      <h2>Player logs</h2>
+      <ul>
+        <li ng-repeat="log in PlayerSrv.getLogs()">
+          {{log.text}},{{log.date | date:'hh:mm:ss'}}
+        </li>
+      </ul>
+    </div>
+    <button log="fight">Fight</button>
+    <button log="potion">Potion</button>
     
     <!-- create a custom directive that applies css properties to an element -->
     
@@ -19,5 +34,10 @@
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
     <script src="subjects/custom-directives/app.js"></script>
+    <script src="subjects/custom-directives/css.directive.js"></script>
+    <script src="subjects/custom-directives/css.controller.js"></script>
+    <script src="subjects/custom-directives/log.directive.js"></script>
+    <script src="subjects/custom-directives/player.service.js"></script>
+    <script src="subjects/custom-directives/player.controller.js"></script>
   </body>
 </html>
