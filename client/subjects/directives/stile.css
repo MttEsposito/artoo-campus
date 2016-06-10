@@ -1,0 +1,9 @@
+.item{
+    border:2px dashed #333;
+}
+.item.available{
+    border-color:green;
+}
+.item.unavailable{
+    border-color:red;
+}
