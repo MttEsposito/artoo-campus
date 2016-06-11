@@ -6,35 +6,48 @@
     <meta name="viewport" content="width=device-width">
     <title>BttCalc</title>
    </head>
-  <body>
+  <body ng-app='artoo'>
+   
     <h1>BttCalc</h1>
-      <div>
-        <h3>Inserimento Battery-Pack</h3>
-        Capacity:<input type="text" name="Capacity" placeholder="Capacity"/>
-        Cellnumber:<select>
-                    <option value="2s">2s</option>
-                    <option value="3s">3s</option>
-                    <option value="4s">4s</option>
-                    <option value="5s">5s</option>
-                    <option value="6s">6s</option>
+      <div ng-controller="DataInp">
+        <h3>Inserimento Lipo-Battery-Pack</h3>
+        <!-- inserimento dati batteria -->
+        Capacity:<input ng-model="battery.capacity" ng-type="text" name="Capacity" placeholder="Capacity in mA"/>
+        
+        Cellnumber:<select ng-model="battery.nCell" ng-options="option for option in cell" ng-change="setCells(battery.nCell)">
                    </select>
-        C-decharge-rate:<select>
-                          <option value="5">5</option>
-                          <option value="10">10</option>
-                          <option value="15">15</option>
-                          <option value="20">20</option>
-                          <option value="25">25</option>
-                          <option value="30">30</option>
-                          <option value="35">35</option>
-                          <option value="40">40</option>
-                          <option value="45">45</option>
-                          <option value="50">50</option>
-                          <option value="55">55</option>
-                          <option value="60">60</option>
+        <div ng-repeat="cell in battery.cells"><input type="text" ng-model="cell.voltage" placeholder="Voltage in V"></div>
+        
+        C-decharge-rate:<select ng-model="battery.cRate" ng-options="option for option in crateD">
                         </select>
-        C/D cycle:<input type="text" name="C/D cycle" placeholder="C/D cycle"/>
-        Resistence:<input type="text" name="Resitence" placeholder="Internal resistence"/>
-      </div><br>
+        
+        C/D cycle:<input ng-model="battery.cd" type="text" name="C/D cycle" placeholder="C/D number cycle" />
+        
+        Resistence:<input ng-model="battery.resistence" type="text" name="Resistence" placeholder="Internal resistence in ohm" />
+    <ul>
+      <li>
+        {{battery.capacity}}
+        {{battery.nCell}}
+        {{battery.cells}}
+        {{battery.cRate}}
+        {{battery.cd}}
+        {{battery.resistence}}
+      </li>
+    </ul>
+    </table>
+    
     <button type="submit">Aggiungi</button>
+  
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="project/app.js"></script>
+  <script src="project/btt.controller.js"></script>
+  
+  
+  
+  
+  
+  
+  
+  
   </body>
 </html>
