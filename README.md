@@ -36,7 +36,11 @@ npm install
 ![Quests 4](https://assets.moqups.com/57dqoZC60v/Page_1.png)
 
 ##project
-
-
+Battery calcolate and manager for rc-Hobbies
 ###Features
-*
+* as a user i insert the battery pack data
+* as a user i can modified the battery pack data
+* as a user i can delete a field of the battery pack data
+* as a user i can calcolate the flight time (min)
+* as a user i can calcolate the trust of the battery (watt)
+* as a user i can calcolate the speed of the speed of a motor(kh/m)
