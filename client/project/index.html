@@ -9,7 +9,8 @@
   <body ng-app='artoo'>
    
     <h1>BttCalc</h1>
-      <div ng-controller="DataInp">
+    <div ng-controller="DataInp">
+      <form ng-submit="add(battery)">
         <h3>Inserimento Lipo-Battery-Pack</h3>
         <!-- inserimento dati batteria -->
         Capacity:<input ng-model="battery.capacity" ng-type="text" name="Capacity" placeholder="Capacity in mA"/>
@@ -24,23 +25,51 @@
         C/D cycle:<input ng-model="battery.cd" type="text" name="C/D cycle" placeholder="C/D number cycle" />
         
         Resistence:<input ng-model="battery.resistence" type="text" name="Resistence" placeholder="Internal resistence in ohm" />
-    <ul>
-      <li>
-        {{battery.capacity}}
-        {{battery.nCell}}
-        {{battery.cells}}
-        {{battery.cRate}}
-        {{battery.cd}}
-        {{battery.resistence}}
-      </li>
-    </ul>
-    </table>
-    
-    <button type="submit">Aggiungi</button>
-  
+           <button type="submit">Aggiungi</button> <a ng-show="selectedBattery" href ng-click="BttSrv.remove(selectedBattery)">Remove</a>
+        
+        <div>Update-Battery-Pack N°  <select ng-change="selectBattery(selectedBattery)" ng-model="selectedBattery" ng-options="battery as battery.id for battery in BttSrv.get()">
+          <option value=""></option>
+        </select></div>
+       
+        <div ng-repeat="battery in BttSrv.get()">
+          <ul>
+            <li>
+              
+              <div>
+                BatteryPack-N°:{{battery.id}}
+              </div>
+              <div>
+                Capacity:{{battery.capacity}} mA
+              </div>
+              <div>
+                N°Cell-Battery:{{battery.nCell}}
+              </div>
+              <div ng-repeat="cell in battery.cells">
+                Voltage-Cells:{{cell.voltage}}v
+              </div>
+              <div>
+                C-rate:{{battery.cRate}}
+              </div>
+              <div>
+                C/D:{{battery.cd}}
+              </div>
+              <div>
+                Internal-Resistence:{{battery.resistence}} Ω
+              </div>
+              
+            </li>
+          <hr>
+          </ul>
+        </div>
+      
+      </form>
+      
+    </div>
+
   <script src="node_modules/angular/angular.min.js"></script>
   <script src="project/app.js"></script>
   <script src="project/btt.controller.js"></script>
+  <script src="project/btt.service.js"></script>
   
   
   
