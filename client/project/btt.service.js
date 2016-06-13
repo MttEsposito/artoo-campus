@@ -25,7 +25,8 @@ angular.module('artoo').service('BttSrv', function() {
         return  batteries;
     }
     this.remove = (battery) =>{
-        
+        console.log(battery);
+        batteries.splice(battery.id-1,battery.id);
     }
  
         
