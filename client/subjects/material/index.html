@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
     <title>Artoo Campus - Angular Material</title>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="ui/appbar/appbar.css">
     <!-- load material css -->
@@ -14,20 +15,79 @@
     <appbar></appbar>
     
     <!-- check the typography -->
+    <h1 class="md-display-2">Titolo</h1>
+    <h2 class="md-title">titolo2</h2>
+    <div class="md-subhead">titolo3</div>
+    <md-button class="md-button md-raised md-warn">button</md-button>
+    
     
     <!-- setup a theme -->
     
     <!-- practice the layout -->
     
+    <div layout="row">
+      <div>child1</div>
+      <div>child2</div>
+      <div>child3</div>
+    </div>
+    <div layout="column">
+      <div>child1</div>
+      <div>child2</div>
+      <div>child3</div>
+    </div>
+    <div layout="row" layout-padding layout-wrap>
+      <div style="background: green" flex>child1</div>
+      <div style="background: blue" flex>child2</div>
+      <div style="background: red" flex>child3</div>
+      <div style="background: yellow" flex>child4</div>
+    </div>
+ <!--   
+    <div ng-controller="MaterialCtrl">
+    <div>MinDate{{minDate}}</div>
+    
+    
+     <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+  
+    
+  
+    
+    </div>  -->
+      <div ng-controller="MaterialCtrl">
+      
+       <h4>Only weekends are selectable</h4>
+        <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+        md-date-filter="onlyWeekendsPredicate"></md-datepicker>
+      <form layout="column">
+        <md-input-container >
+        <label>Title</label>
+        <input  ng-model="user.title">
+        </md-input-container>
+        <md-input-container >
+        <label>Name</label>
+        <input name="user" type="text"  ng-model="user.name" required>
+        
+        <div ng-messages="projectForm.user.$error">
+        <div ng-message="required">This is required.</div>
+      </md-input-container>
+        </div>
+        </div>
+      </form>
+      </div>
+    
     <!-- play with some directives & services -->
     
     <script src="node_modules/angular/angular.min.js"></script>
     <!-- load aria -->
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <!-- load animation -->
+     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <!-- load messages -->
+     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <!-- load material -->
+     <script src="node_modules/angular-material/angular-material.min.js"></script>
     
     <script src="ui/appbar/appbar.js"></script>
     <script src="subjects/material/app.js"></script>
+    <script src="subjects/material/material.controller.js"></script>
   </body>
 </html>
