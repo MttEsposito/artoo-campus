@@ -26,9 +26,9 @@ angular.module('artoo').service('BttSrv', function() {
     }
     this.remove = (battery) =>{
         console.log(battery);
-        batteries.splice(battery.id-1,battery.id);
+        batteries.splice(batteries.findIndex(singleBattery => singleBattery.id === battery.id), 1);
     }
- 
+    
         
     
 });

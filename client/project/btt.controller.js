@@ -19,6 +19,5 @@ angular.module('artoo').controller('DataInp', function($scope,BttSrv) {
     $scope.selectBattery = (battery) =>{
         $scope.battery = (battery && angular.copy(battery)) || {};
     }
-
-   
+  
 });

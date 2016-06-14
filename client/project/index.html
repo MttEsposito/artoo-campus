@@ -5,37 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
     <title>BttCalc</title>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
    </head>
   <body ng-app='artoo'>
-   
-    <h1>BttCalc</h1>
+    <div ng-controller="DataInp">
+      <md-toolbar class="md-theme-light" style="background: lightblue">
+        <h1 style="color:black">BttCalc</h1>
+  </md-toolbar>
+   <md-button class="md-primary" ng-href="project/calcoli.html">Pagina-Calcoli</md-button>
     <div ng-controller="DataInp">
       <form ng-submit="add(battery)">
-        <h3>Inserimento Lipo-Battery-Pack</h3>
+        <h3 >Inserimento Lipo-Battery-Pack:</h3>
         <!-- inserimento dati batteria -->
+        <div>
         Capacity:<input ng-model="battery.capacity" ng-type="text" name="Capacity" placeholder="Capacity in mA"/>
-        
+        </div>
+        <div>
         Cellnumber:<select ng-model="battery.nCell" ng-options="option for option in cell" ng-change="setCells(battery.nCell)">
                    </select>
-        <div ng-repeat="cell in battery.cells"><input type="text" ng-model="cell.voltage" placeholder="Voltage in V"></div>
-        
+        <div ng-repeat="cell in battery.cells">Voltage-Single-Cell:<input type="text" ng-model="cell.voltage" placeholder="Voltage in V"></div>
+        </div>
+        <div>
         C-decharge-rate:<select ng-model="battery.cRate" ng-options="option for option in crateD">
                         </select>
-        
+        </div>
+        <div>
         C/D cycle:<input ng-model="battery.cd" type="text" name="C/D cycle" placeholder="C/D number cycle" />
-        
+        </div>
+        <div>
         Resistence:<input ng-model="battery.resistence" type="text" name="Resistence" placeholder="Internal resistence in ohm" />
-           <button type="submit">Aggiungi</button> <a ng-show="selectedBattery" href ng-click="BttSrv.remove(selectedBattery)">Remove</a>
-        
+        </div>
+        <div layout="row">
+            <md-button md-no-ink class="md-button md-raised md-warn" type="submit">Add</md-button>
+            <md-button class="md-button md-raised md-warn" ng-show="selectedBattery" href ng-click="BttSrv.remove(selectedBattery)">Remove</md-button>
+        </div>
+        <div>
         <div>Update-Battery-Pack N°  <select ng-change="selectBattery(selectedBattery)" ng-model="selectedBattery" ng-options="battery as battery.id for battery in BttSrv.get()">
           <option value=""></option>
-        </select></div>
+        </select></div></div>
+       <hr>
        
-        <div ng-repeat="battery in BttSrv.get()">
+        <div ng-repeat="battery in BttSrv.get()"layout="row">
           <ul>
             <li >
-              
-              <div>
+              <div flex=50>
                 BatteryPack-N°:{{battery.id}}
               </div>
               <div>
@@ -67,6 +80,10 @@
     </div>
 
   <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="node_modules/angular-material/angular-material.min.js"></script>
   <script src="project/app.js"></script>
   <script src="project/btt.controller.js"></script>
   <script src="project/btt.service.js"></script>
