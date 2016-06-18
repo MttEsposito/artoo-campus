@@ -1,0 +1,65 @@
+<div>
+      <form ng-submit="add(battery)">
+        <h3 >Inserimento Lipo-Battery-Pack:</h3>
+        <!-- inserimento dati batteria -->
+        <div>
+        Capacity:<input ng-model="battery.capacity" ng-type="text" name="Capacity" placeholder="Capacity in mA"/>
+        </div>
+        <div>
+        Cellnumber:<select ng-model="battery.nCell" ng-options="option for option in cell" ng-change="setCells(battery.nCell)">
+                   </select>
+        <div ng-repeat="cell in battery.cells">Voltage-Single-Cell:<input type="text" ng-model="cell.voltage" placeholder="Voltage in V"></div>
+        </div>
+        <div>
+        C-decharge-rate:<select ng-model="battery.cRate" ng-options="option for option in crateD">
+                        </select>
+        </div>
+        <div>
+        C/D cycle:<input ng-model="battery.cd" type="text" name="C/D cycle" placeholder="C/D number cycle" />
+        </div>
+        <div>
+        Resistence:<input ng-model="battery.resistence" type="text" name="Resistence" placeholder="Internal resistence in ohm" />
+        </div>
+        <div layout="row">
+            <md-button md-no-ink class="md-button md-raised md-warn" type="submit">Add</md-button>
+            <md-button class="md-button md-raised md-warn" ng-show="selectedBattery" href ng-click="BttSrv.remove(selectedBattery)">Remove</md-button>
+        </div>
+        <div>
+        <div>Update-Battery-Pack N°  <select ng-change="selectBattery(selectedBattery)" ng-model="selectedBattery" ng-options="battery as battery.id for battery in BttSrv.get()">
+          <option value=""></option>
+        </select></div></div>
+       <hr>
+       
+   <!--     <div ng-repeat="battery in BttSrv.get()"layout="row"> -->
+        <md-list flex>
+           <md-list-item  ng-repeat="battery in BttSrv.get()" layout="column" layout-align="start start">
+              <div flex=50>
+                BatteryPack-N°:{{battery.id}}
+              </div>
+              <div>
+                Capacity:{{battery.capacity}} mA
+              </div>
+              <div>
+                N°Cell-Battery:{{battery.nCell}}
+              </div>
+              <div ng-repeat="cell in battery.cells">
+                Voltage-Cells:{{cell.voltage}}v
+              </div>
+              <div>
+                C-rate:{{battery.cRate}}
+              </div>
+              <div>
+                C/D:{{battery.cd}}
+              </div>
+              <div>
+                Internal-Resistence:{{battery.resistence}} Ω
+              </div>
+              <hr>
+            </md-list-item>
+          </md-list flex>
+          <hr>
+        </div>
+      </form>
+      
+    </div>
+</div>

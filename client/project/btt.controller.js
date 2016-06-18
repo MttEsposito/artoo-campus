@@ -1,4 +1,4 @@
-angular.module('artoo').controller('DataInp', function($scope,BttSrv) {
+angular.module('artoo').controller('BattCtrl', function($scope,BttSrv) {
    //  console.log("Funge funge funge");
    $scope.BttSrv=BttSrv;
    $scope.battery={};

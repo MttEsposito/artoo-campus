@@ -11,6 +11,10 @@
   
   <body ng-app="artoo">
     <appbar></appbar>
+    <a ui-sref="home">home</a>
+    <a ui-sref="contacts">contacts</a>
+   
+    <div ui-view></div>
     
     <!-- create a menu -->
     
@@ -32,6 +36,13 @@
     
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="subjects/ui-router/app.js"></script>
+    <script src="subjects/ui-router/contacts/contacts.controller.js"></script>
+    <script src="subjects/ui-router/contacts/item/items.controller.js"></script>
+    <script src="subjects/ui-router/contacts/item/items.service.js"></script>
+    <script src="subjects/ui-router/contacts/list/contacts.controller.js"></script>
+    <script src="subjects/ui-router/contacts/contacts.controller.js"></script>
+    <script src="subjects/ui-router/pageloader/page-loader.controller.js/></script>
   </body>
 </html>

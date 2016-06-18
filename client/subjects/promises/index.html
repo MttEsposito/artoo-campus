@@ -12,6 +12,70 @@
   <body ng-app="artoo">
     <appbar></appbar>
     
+     <!-- create an API interface for the following resources -->
+    <!-- http://jsonplaceholder.typicode.com/users
+         http://jsonplaceholder.typicode.com/posts
+         http://jsonplaceholder.typicode.com/comments
+         http://jsonplaceholder.typicode.com/albums
+         http://jsonplaceholder.typicode.com/todos -->
+       
+       
+       <div ng-controller="RedditCtrl">
+         <form ng-submit="query(search)">
+           
+           search 
+           <input type="text">
+           
+           
+           
+           
+         </form>
+         
+         <div ng-repeat="reddit in reddits">
+           
+            {{reddit}}
+           
+           
+           
+         </div>
+          
+         
+         
+         
+         
+       </div>
+       
+       
+       
+       
+       
+       <hr>
+       
+       
+       
+       <div ng-controller="UserCtrl">
+         
+     <form name="form" novalidate autocomplete="off">
+       <label>name</label>
+       <input type="text" ng-model="user.name">
+        <label>email</label>
+       <input type="email" ng-model="user.email">
+       <button type="submit">submit</button>
+     </form>
+     <div ng-show="loading">Loading..</div>
+          <div ng-show="userDetails && !loading">User Details:{{userDetails}}</div>
+            <div ng-hide="loading"></div>
+         <ul>
+           <li ng-repeat="user in users">
+             <a href ng-click="getDetails(user.id)">
+               {{user.name}}
+             </a>
+             <button ng-click="remove(user)">Remove</button>
+             </li>
+         </ul>
+         
+       </div>  
+       
     <!-- create an items resource mapped on a json -->
     
     <!-- create a reddit resource to play with reddits -->
@@ -20,8 +84,12 @@
     
     <script src="node_modules/angular/angular.min.js"></script>
     <!-- load angular-resource -->
-    
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
     <script src="subjects/promises/app.js"></script>
+    <script src="subjects/promises/users/users.service.js"></script>
+    <script src="subjects/promises/users/users.controller.js"></script>
+    <script src="subjects/promises/reddit/reddit.service.js"></script>
+    <script src="subjects/promises/reddit/reddit.controller.js"></script>
   </body>
 </html>

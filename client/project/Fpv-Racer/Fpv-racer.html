@@ -1,0 +1,36 @@
+<div>
+  <form ng-submit="add(racer)">
+    <h3 >Inserimento Racer</h3>
+    <div>
+    Name:<input ng-model="racer.name" ng-type="text" name="name" placeholder="Insert name fpv racer"/>
+    </div><br>
+    <div>
+    timelap:<input ng-model="racer.lap" ng-type="text" name="lap" placeholder="Insert lap-time" />
+    </div>
+    <div>
+
+    <div layout="row">
+        <md-button md-no-ink class="md-button md-raised md-warn" type="submit">Add</md-button>
+     
+    </div>
+    
+    <hr>
+   
+
+    <md-list flex>
+       <md-list-item  ng-repeat="racer in FpvSrv.get()" layout="column" layout-align="start start">
+        
+          <div>
+            Name:{{racer.name}} 
+          </div>
+          <div>
+            Racer-Lap:{{racer.lap}}
+          </div>
+     
+          <hr>
+        </md-list-item>
+      </md-list flex>
+      <hr>
+    </div>
+  </form>
+</div>
