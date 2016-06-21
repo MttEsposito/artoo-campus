@@ -22,18 +22,19 @@
         </div>
         <div layout="row">
             <md-button md-no-ink class="md-button md-raised md-warn" type="submit">Add</md-button>
-            <md-button class="md-button md-raised md-warn" ng-show="selectedBattery" href ng-click="BttSrv.remove(selectedBattery)">Remove</md-button>
+            <md-button md-no-ink class="md-button md-raised md-warn" ng-show="selectedBattery" href ng-click="remove(selectedBattery)">Remove</md-button>
         </div>
         <div>
-        <div>Update-Battery-Pack N°  <select ng-change="selectBattery(selectedBattery)" ng-model="selectedBattery" ng-options="battery as battery.id for battery in BttSrv.get()">
+        <div>Update-Battery-Pack N°  <select ng-change="selectBattery(selectedBattery)" ng-model="selectedBattery" ng-options="battery as battery.id for battery in batteries">
           <option value=""></option>
         </select></div></div>
        <hr>
        
    <!--     <div ng-repeat="battery in BttSrv.get()"layout="row"> -->
         <md-list flex>
-           <md-list-item  ng-repeat="battery in BttSrv.get()" layout="column" layout-align="start start">
+           <md-list-item ng-repeat="battery in batteries" layout="column" layout-align="start start">
               <div flex=50>
+                <img ng-src="https://s32.postimg.org/7ndprspl1/battery.png"><br>
                 BatteryPack-N°:{{battery.id}}
               </div>
               <div>
@@ -53,13 +54,11 @@
               </div>
               <div>
                 Internal-Resistence:{{battery.resistence}} Ω
+               <hr>
               </div>
-              <hr>
             </md-list-item>
           </md-list flex>
-          <hr>
         </div>
       </form>
-      
     </div>
 </div>

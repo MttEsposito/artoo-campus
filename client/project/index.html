@@ -9,13 +9,14 @@
   </head>
    
   <body ng-app='artoo'>
-    <md-toolbar class="md-theme-light" style="background: lightblue">
-      <h1 style="color:black">MyRc-Mate</h1>
-    </md-toolbar>
-    
-    <md-button class="md-primary"  ui-sref="battery">Battery-Monitor</md-button>
-    <md-button class="md-primary"  ui-sref="calcoli">Pagina-Calcoli</md-button>
-    <md-button class="md-primary"  ui-sref="fpvrace">FPV-Race</md-button>
+   <div>
+    <md-toolbar class=" md-raised md-accent">
+      <h2><span>MyRc-Mate</span></h2>
+  </div>
+  </md-toolbar>
+    <md-button md-no-ink class="md-primary"  ui-sref="battery">Battery-Monitor</md-button>
+    <md-button md-no-ink class="md-primary"  ui-sref="calcoli">Pagina-Calcoli</md-button>
+
     
     <div ui-view></div>
     
@@ -25,13 +26,13 @@
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
     <script src="project/app.js"></script>
     <script src="project/btt.controller.js"></script>
     <script src="project/btt.service.js"></script>
-    <script src="project/Fpv-Racer/fpv.service.js"></script>
-    <script src="project/Fpv-Racer/fpv.controller.js"></script>
     <script src="project/calcoli/calcoli.service.js"></script>
     <script src="project/calcoli/calcoli.controller.js"></script>
+    
   
   </body>
 </html>

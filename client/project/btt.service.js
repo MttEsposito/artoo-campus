@@ -1,34 +1,16 @@
-angular.module('artoo').service('BttSrv', function() {
-    var batteries = [];
+angular.module('artoo').service('BttSrv', function($resource) {
     
-    this.add = (battery) => {
-        if (battery.id) {
-            batteries.forEach((singleBattery) => {
-                if (singleBattery.id === battery.id) {
-                    singleBattery.capacity=battery.capacity;
-                    singleBattery.nCell=battery.nCell;
-                    singleBattery.cells=battery.cells;
-                    singleBattery.cRate=battery.cRate;
-                    singleBattery.cd=battery.cd;
-                    singleBattery.resistence=battery.resistence;
-                };
-            });
-       //     console.log(battery, batteries);
-            return;
-        }
-        
-        battery.id=batteries.length+1;
-        batteries.push(battery);
-        
+    var Batteries = $resource('/api/batteries/:id', {
+        id: '@id',
+    }, {});
+    
+    
+    this.query = () => {
+        return Batteries.query().$promise;
+    }
+    
+    this.create = () => {
+        return new Batteries();
     };
-    this.get = (battery) => {
-        return  batteries;
-    }
-    this.remove = (battery) =>{
-        console.log(battery);
-        batteries.splice(batteries.findIndex(singleBattery => singleBattery.id === battery.id), 1);
-    }
-    
-        
     
 });

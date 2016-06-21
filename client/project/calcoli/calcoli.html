@@ -1,16 +1,14 @@
 <h3>Calcolo flight time:</h3>
-    Capacity:<input type="number" ng-model="num.cap">
-    Ampere-Totali:<input type="number" ng-model="num.amp">
-    <button type="submit">calcola</button><br><br>
-    Flight-time=<p id="ris"></p><hr>
+    Capacity:<input type="number" ng-model="n.cap">
+    Ampere-Totali:<input type="number" ng-model="n.amp"><br>
+    <div layout="row">Flight-time={{n.cap/n.amp}}min</div><hr>
+
 <h3>Calcolo Forza di spinta :</h3>
-    Volt:<input type="number" id="volt" name="text3">
-    Ampere-Totali:<input type="number" id="amp2" name="text4">
-    <button onclick="myFunction2()">calcola</button><br><br>
-    Watt=<p id="ris2"></p><hr>
+    Volt:<input type="number" ng-model="n.volt">
+    Ampere-Totali:<input type="number" ng-model="n.totamp"><br>
+    <div layout="row">Watt={{n.volt*n.totamp}}watt</div><hr>
+
 <h3>Calcolo velocita del mezzo :</h3>
-    RPM:<input type="number" id="rpm" name="text5">
-    Passo elica:<input type="number" id="pe" name="text6">
-    <button onclick="myFunction3()">calcola</button><br><br>
-    Speed=<p id="ris3"></p><hr>
- </div> 
+    RPM:<input type="number" ng-model="n.rpm">
+    Passo elica:<input type="number"ng-model="n.pe"><br>
+    <div layout="row">Velocita={{n.rpm*n.pe}}Kmh</div><hr>

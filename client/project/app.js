@@ -1,6 +1,7 @@
 angular.module('artoo', [
  'ngMaterial',
  'ui.router',
+ 'ngResource',
  ])
  
  .config(function($stateProvider, $urlRouterProvider) {
@@ -19,12 +20,6 @@ angular.module('artoo', [
      templateUrl: 'project/calcoli/calcoli.html'
     })
     
-    .state('fpvrace', {
-       controller: 'FpvCtrl',
-       controllerAs: 'FpvCtrl',
-       url: '/Fpv-racer',
-       templateUrl: 'project/Fpv-Racer/Fpv-racer.html'
-    })
 
  
 })
